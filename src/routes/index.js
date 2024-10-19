@@ -1,4 +1,4 @@
-//este archivo sera utilizado para configurar todas las rutas principales del sistema
+//Este archivo sera utilizado para configurar todas las rutas principales del sistema
 
 const express = require('express');
 const router = express.Router();

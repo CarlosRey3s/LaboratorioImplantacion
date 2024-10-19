@@ -1,0 +1,44 @@
+<div class="container p-4"> 
+    <div class="col-sm-12"> 
+        <div class="row"> 
+            <div class="col-sm-6"> 
+                <h3>Listado estudiantes</h3> 
+            </div> 
+            <div class="col-sm-6"> 
+                <a href="/estudiantes/agregar" class="btn btn-success d-block 
+text-white">Agregar estudiante</a> 
+            </div> 
+        </div> 
+    </div> 
+    <div class="col-sm-12 mt-4"> 
+        <table class="table table-bordered table-striped"> 
+        <thead class="thead-dark"> 
+            <tr> 
+                <th scope="col">ID</th> 
+                <th scope="col">Nombre</th> 
+                <th scope="col">Apellido</th> 
+                <th scope="col">Email</th> 
+                <th scope="col">ID Carrera</th> 
+                <th scope="col">Usuario</th> 
+                <th scope="col">Opciones</th> 
+            </tr> 
+        </thead> 
+        <tbody> 
+            {{#each estudiantes}} 
+            <tr> 
+                <th scope="row">{{idestudiante}}</th> 
+                <td>{{nombre}}</td> 
+                <td>{{apellido}}</td> 
+                <td>{{email}}</td> 
+                <td>{{idcarrera}}</td> 
+                <td>{{usuario}}</td> 
+                <td> 
+                 <a href="/estudiantes/editar/{{idestudiante}}" class="btn btn-primary">Modificar</a>
+                    <a href="/estudiantes/eliminar/{{idestudiante}}" class="btn btn-danger text-white">Eliminar</a> 
+                </td> 
+            </tr> 
+            {{/each}} 
+        </tbody> 
+    </table> 
+    </div> 
+</div>
