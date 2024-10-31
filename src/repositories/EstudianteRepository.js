@@ -51,8 +51,7 @@ ObtenerCarreras: async () => {
   */
  actualizarEstudiante: async (idestudiante, estudiante) => {
   try {
-      const result = await pool.query(
-          'UPDATE estudiantes SET nombre = ?, apellido = ?, email = ?, idcarrera = ?, usuario = ? WHERE idestudiante = ?',
+      const result = await pool.query('UPDATE estudiantes SET nombre = ?, apellido = ?, email = ?, idcarrera = ?, usuario = ? WHERE idestudiante = ?',
           [estudiante.nombre, estudiante.apellido, estudiante.email, estudiante.idcarrera, estudiante.usuario, idestudiante]
       );
       return result.affectedRows > 0;
@@ -68,7 +67,7 @@ ObtenerCarreras: async () => {
       const result = await pool.query('DELETE FROM estudiantes WHERE idestudiante = ?', [idestudiante]); 
       return result.affectedRows > 0; 
     }catch(error){ 
-      console.error('Erro al eliminar el registro', error); 
+      console.error('Error al eliminar el registro', error); 
     } 
   } 
 } 
