@@ -1,0 +1,42 @@
+<div class="container p-4"> 
+    <div class="row justify-content-center"> 
+        <h1>Asignar grupo</h1> 
+    </div> 
+    <div class="row justify-content-center mt-4"> 
+        <div class="col-md-4"> 
+            <div class="form-group"> 
+                <select class="form-control" id="estudiante"> 
+                     <option value="" disabled>Seleccione una opción</option> 
+                    {{#each lstEstudiantes}} 
+                    <option value="{{idestudiante}}">{{nombre}}</option> 
+                    {{/each}} 
+                </select> 
+            </div> 
+            <div hidden> 
+                <input type="hidden" id="idgrupo" value="{{idgrupo}}" /> 
+            </div> 
+            <div class="form-group"> 
+                <button onclick="agregarEstudiante()" class="btn btnsuccess">Agregar</button> 
+            </div> 
+        </div> 
+        <div class="col-sm-12 mt-4"> 
+            <form action="/grupos/asignargrupo" method="POST" class="form-ajax"> 
+                <table class="table table-bordered table-striped"> 
+                    <thead class="thead-dark"> 
+                        <tr> 
+                            <th scope="col">Codigo</th> 
+                            <th scope="col">Estudiante</th> 
+                            <th scope="col">Opciones</th> 
+                        </tr> 
+                    </thead> 
+                    <tbody id="contenido_tabla"></tbody> 
+                </table> 
+                <div id="data" hidden></div> 
+                <div class="form-group"> 
+                    <button class="btn btn-success btn-block" 
+id="enviarDatos">Guardar</button> 
+                </div> 
+            </form> 
+        </div> 
+    </div> 
+</div>

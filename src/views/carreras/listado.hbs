@@ -1,0 +1,35 @@
+<div class="container p-4"> 
+    <div class="col-sm-12"> 
+        <div class="row"> 
+            <div class="col-sm-6"> 
+                <h3>Listado Carreras</h3> 
+            </div> 
+            <div class="col-sm-6"> 
+                <a href="/carreras/agregar" class="btn btn-success d-block text-white">Agregar Carrera</a> 
+            </div> 
+        </div> 
+    </div> 
+    <div class="col-sm-12 mt-4"> 
+        <table class="table table-bordered table-striped"> 
+        <thead class="thead-dark"> 
+            <tr> 
+                <th scope="col">ID</th> 
+                <th scope="col">Carreras</th> 
+                <th scope="col">Opciones</th> 
+            </tr> 
+        </thead> 
+        <tbody> 
+            {{#each carreras}} 
+            <tr> 
+                <th scope="row">{{idcarrera}}</th> 
+                <td>{{carrera}}</td>  
+                <td> 
+                 <a href="/carreras/editar/{{idcarrera}}" class="btn btn-primary">Modificar</a>
+                    <a href="/carreras/eliminar/{{idcarrera}}" class="btn btn-danger text-white">Eliminar</a> 
+                </td> 
+            </tr> 
+            {{/each}} 
+        </tbody> 
+    </table> 
+    </div> 
+</div>

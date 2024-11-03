@@ -1,50 +1,56 @@
 const pool = require('../config/databaseController');
+
 module.exports = {
-    //Obtener Todas las carreras
-    ObtenerTodasLascarreras: async() => {
-        try{
+    // Obtener todas las carreras
+    ObtenerTodasLascarreras: async () => {
+        try {
             const result = await pool.query('SELECT * FROM carreras');
             return result;
-        }catch(error){
-            console.error('Ocurrio un problema al consultar la lista de carreras',error);
+        } catch (error) {
+            console.error('Ocurrió un problema al consultar la lista de carreras', error);
         }
     },
-    //Obtener Carreras por el id para actualizar
-    ObtenerCarrerasPorId: async (idcarrera) =>{
-        try{
-            
-        }catch{}
-    },
-    agregarCarreras: async (carrera) =>{
-        const {idcarrera, carrera} = carrera;
+
+    // Obtener carreras por el ID para actualizar
+    ObtenerCarrerasPorId: async (idcarrera) => {
         try {
-            const result = await pool.query('INSER INTO carreras (idcarrera,carrera) VALUES (?,?)',[idcarrera,carrera]);
-            return result.insertId; // Devuelve el id de la carrera agregada
+            const result = await pool.query('SELECT * FROM carreras WHERE idcarrera = ?', [idcarrera]);
+            return result[0]; // Devuelve la primera coincidencia (asumiendo que el id es único)
         } catch (error) {
-            console.error('Error al agregar la carrera: ', error);
+            console.error('Error al obtener la carrera por ID:', error);
+        }
+    },
+
+    // Agregar una carrera
+    agregarCarreras: async (carreras) => {
+        const{idcarrera,nombreCarrera} = carreras;
+        try {
+            const result = await pool.query( 'INSERT INTO carreras (idcarrera, carrera) VALUES (?, ?)',[idcarrera, nombreCarrera]);
+            return result.insertId; // Devuelve el ID de la carrera agregada
+        } catch (error) {
+            console.error('Error al agregar la carrera:', error);
             return null;
         }
     },
-    /**
-     * Actualizar Carreras
-     */
-    actualizarCarreras: async(idcarrera,carrera) => {
+
+    // Actualizar una carrera
+    actualizarCarreras: async (idcarrera, carrera) => {
         try {
-            const result = await pool.query('UPDATE carreras SET carrera = ? WHERE idcarrera = ?',[carrera,idcarrera]);
-            return result.affectedRows > 0;
+            const result = await pool.query('UPDATE carreras SET carrera = ? WHERE idcarrera = ?', [carrera, idcarrera]);
+            return result.affectedRows > 0; // Devuelve true si se actualizó alguna fila
         } catch (error) {
-            console.error('Error al actualizar la Carrera: ', error);
+            console.error('Error al actualizar la carrera:', error);
             throw error;
-            
         }
     },
-    //eliminar una Carrera
-    eliminarCarrera: async(idcarrera) =>{
+
+    // Eliminar una carrera
+    eliminarCarrera: async (idcarrera) => {
         try {
-            const result = await pool.query('DELETE FROM carrea WHERE idcarrera = ?',[idcarrera]);
-            return result.affectedRows > 0;
+            const result = await pool.query('DELETE FROM carreras WHERE idcarrera = ?', [idcarrera]);
+            return result.affectedRows > 0; // Devuelve true si se eliminó alguna fila
         } catch (error) {
-            console.error('Error al eliminar el registro')
+            console.error('Error al eliminar el registro:', error);
         }
     }
-}
+};
