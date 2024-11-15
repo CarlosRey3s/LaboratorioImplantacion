@@ -1,0 +1,47 @@
+<div class="container p-4">
+    <div class="row justify-content-center">
+        <h1>Editar profesor</h1>
+    </div>
+    <div class="row justify-content-center mt-4">
+       <div class="col-md-4">
+        <form method="POST" action="/profesores/editar/{{profesor.idprofesor}}">
+            <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" name="nombre" 
+                placeholder="Nombre del profesor" value="{{profesor.nombre}}" autofocus />
+            </div>
+            <div class="form-group">
+                <label for="apellido">Apellido</label>
+                <input type="text" class="form-control" name="apellido" 
+                placeholder="Apellido del estudiante" value="{{profesor.apellido}}" />
+            </div>
+            <div class="form-group">
+                <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" 
+                class="form-control" value="{{profesor.fechanacimiento}}" required />
+            </div>
+            <div class="form-group">
+                 <label for="profesion">Profesión</label>
+                <input type="text" id="profesion" name="profesion" class="form-control"
+                value="{{profesor.profesion}}" required />
+            </div>
+                <div class="form-group">
+                <label for="genero">Género</label>
+                <select class="form-control" name="genero" required>
+                    <option value="">Seleccione</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                </select>
+            </div>
+            <div class="form-group">
+                 <label for="email">Correo Electrónico</label>
+                <input type="text" class="form-control" name="email" 
+                placeholder="Email de profesor" value="{{profesor.email}}" />
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success btn-block">Guardar</button>
+            </div>
+        </form>
+       </div>
+    </div>
+</div>

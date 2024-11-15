@@ -15,9 +15,10 @@ module.exports = {
     ObtenerCarrerasPorId: async (idcarrera) => {
         try {
             const result = await pool.query('SELECT * FROM carreras WHERE idcarrera = ?', [idcarrera]);
-            return result[0]; // Devuelve la primera coincidencia (asumiendo que el id es único)
+            return result.length > 0 ? result[0] : null; // Devuelve la primera coincidencia (asumiendo que el id es único)
         } catch (error) {
             console.error('Error al obtener la carrera por ID:', error);
+            throw error;
         }
     },
 

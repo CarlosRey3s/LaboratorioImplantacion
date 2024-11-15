@@ -31,6 +31,11 @@ app.engine('.hbs', exphbs.engine({
   
     app.use('/carreras', require('./routes/carreras')); // Configuracion de ruta para carreras
 
+    app.use('/profesores', require('./routes/profesores')); // Configuracion de ruta para carreras
+
+    app.use('/materias', require('./routes/materias')); // Configuracion de ruta para materias
+
+
     // Archivos publicos (aca se coloca todo el código al cual el navegador puede acceder) 
     app.use(express.static(path.join(__dirname, 'public'))); 
      

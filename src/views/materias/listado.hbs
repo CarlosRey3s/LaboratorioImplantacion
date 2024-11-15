@@ -1,0 +1,33 @@
+<div class="container p-4">
+    <div class="row justify-content-center">
+        <h3>Listado de Materias</h3>
+    </div>
+    <div class="row justify-content-center mt-4">
+        <div class="col-sm-6 text-right">
+            <a href="/materias/agregar" class="btn btn-success">Agregar Materia</a>
+        </div>
+    </div>
+    <div class="col-sm-12 mt-4">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Materia</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each materias}}
+                <tr>
+                    <td>{{idmateria}}</td>
+                    <td>{{materia}}</td>
+                    <td>
+                        <a href="/materias/editar/{{idmateria}}" class="btn btn-primary">Modificar</a>
+                        <a href="/materias/eliminar/{{idmateria}}" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

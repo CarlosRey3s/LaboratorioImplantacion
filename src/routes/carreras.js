@@ -35,11 +35,10 @@ router.get('/editar/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const carrera = await queries.ObtenerCarrerasPorId(id);
-        const carreras = await queries.ObtenerTodasLascarreras();
         if (!carrera) {
             return res.status(404).send('Carrera no encontrada');
         }
-        res.render('carreras/editar', { carrera, carreras });
+        res.render('carreras/editar', { carrera});
     } catch (error) {
         console.error('Error al obtener la carrera:', error);
         res.status(500).send('Error al cargar la página de edición');
@@ -76,8 +75,8 @@ router.get('/eliminar/:idcarrera', async (request, response) => {
         response.redirect('/carreras');
     } catch (error) {
         console.error('Error al eliminar la carrera:', error);
-        response.status(500).send('Hubo un error al eliminar la carrera');
-    }
+        response.status(500).send('Hubo un error al eliminar la carrera'
+        );}
 });
 
 module.exports = router;
