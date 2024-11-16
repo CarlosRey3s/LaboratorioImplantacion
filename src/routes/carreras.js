@@ -17,11 +17,14 @@ router.get('/agregar', async (request, response) => {
 router.post('/agregar', async (request, response) => {
     const { idcarrera, nombreCarrera } = request.body;
     try {
-        const result = await queries.agregarCarreras({ idcarrera, nombreCarrera });
+        const result = await queries.agregarCarreras({ idcarrera,nombreCarrera });
+
         if (result) {
-            console.log('Carrera agregada con éxito');
-            response.redirect('/carreras');
+            //console.log('Carrera agregada con éxito');
+            request.flash('success', 'Registro insertado con éxito');
+         
         } else {
+            request.flash('error','Ocurrio un problema al guardar el registro');
             response.render('carreras/agregar', { error: 'Hubo un error al agregar la carrera' });
         }
     } catch (error) {

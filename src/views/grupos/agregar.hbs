@@ -1,0 +1,40 @@
+<div class="container p-4">
+    <div class="row justify-content-center">
+        <h3>Agregar Grupo</h3>
+    </div>
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-6">
+            <form method="POST">
+                <div class="form-group mb-3">
+                    <label for="num_grupo">Número del Grupo</label>
+                    <input type="text" id="num_grupo" class="form-control" name="num_grupo"
+                           placeholder="Ejemplo: A01" pattern="[A-Za-z0-9]{1,3}"
+                           title="Ingrese un número de grupo válido (hasta 3 caracteres alfanuméricos)" required />
+                </div>
+                <div class="form-group mb-3">
+                    <label for="anio">Año</label>
+                    <input type="number" id="anio" class="form-control" name="anio"
+                           placeholder="Año" min="2000" max="2100" required />
+                </div>
+                <div class="form-group mb-3">
+                    <label for="ciclo">Ciclo</label>
+                    <input type="text" id="ciclo" class="form-control" name="ciclo"
+                           placeholder="Ciclo" min="1" max="3" required />
+                </div>
+                <div class="form-group mb-3">
+                    <label for="idmateria">ID de la Materia</label>
+                    <input type="number" id="idmateria" class="form-control" name="idmateria"
+                           placeholder="ID de la Materia" required />
+                </div>
+                <div class="form-group mb-3">
+                    <label for="idprofesor">ID del Profesor</label>
+                    <input type="number" id="idprofesor" class="form-control" name="idprofesor"
+                           placeholder="ID del Profesor" required />
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success btn-block">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
